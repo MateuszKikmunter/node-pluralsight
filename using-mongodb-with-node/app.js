@@ -54,6 +54,9 @@ async function main () {
         });
         assert.equal(updatedItem.Newspaper, "Pepper Time");
 
+        const removed = await circulationRepo.remove(addedItem._id);
+        assert(removed);
+
     } catch (error) {
 
         console.log(error);
