@@ -5,14 +5,18 @@ function circulationRepo() {
     const url = "mongodb://localhost:27017";
     const dbName = "circulation";
 
-    function get(query) {
+    function get(query, limit) {
         return new Promise(async (resolve, reject) => {
             const client = new MongoClient(url);
             try {
                 await client.connect();
                 const db = client.db(dbName);
 
-                const items = db.collection("newspapers").find(query);
+                let items = db.collection("newspapers").find(query);
+                if(limit > 0) {
+                    items = items.limit(limit);
+                }
+                
                 resolve(await items.toArray());
                 client.close();
             } catch (error) {
