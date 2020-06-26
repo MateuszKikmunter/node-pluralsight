@@ -11,7 +11,8 @@ const options = {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
-        "Content-Length": data.length
+        "Content-Length": data.length,
+        "Authorization": Buffer.from("myUsername:myPassword").toString("base64")
     }
 };
 
