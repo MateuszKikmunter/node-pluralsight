@@ -1,7 +1,22 @@
-const https = require("https");
+const https = require("http");
 
-const request = https.get(
-    "https://www.google.com",
+const data = JSON.stringify({
+    userName: "FredFlinston"
+});
+
+const options = {
+    hostname: "localhost",
+    port: 8080,
+    path: "/users",
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Content-Length": data.length
+    }
+};
+
+const request = https.request(
+    options,
     (response) => {
         console.log(`statusCode: ${ response.statusCode }`);
         console.log(`headers: ${ response.headers }`);
@@ -16,3 +31,6 @@ const request = https.get(
 request.on("error", (error) => {
     console.log(error);
 });
+
+request.write(data);
+request.end();
