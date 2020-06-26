@@ -1,7 +1,7 @@
-const http = require("http");
+const https = require("https");
 
-const request = http.get(
-    "http://www.google.com",
+const request = https.get(
+    "https://www.google.com",
     (response) => {
         console.log(`statusCode: ${ response.statusCode }`);
         console.log(`headers: ${ response.headers }`);
