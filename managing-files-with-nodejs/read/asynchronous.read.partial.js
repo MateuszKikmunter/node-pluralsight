@@ -1,4 +1,4 @@
-const { convertCsv } = require("./exercise-files/csv.parse");
+const { convertCsv } = require("../exercise-files/csv.parse");
 const { open, read } = require("fs");
 
 //fd === file descriptior
